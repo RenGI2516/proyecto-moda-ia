@@ -18,13 +18,10 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // **FIX FINAL**: Use window.onload to ensure all external scripts (React, Lucide)
-        // are fully loaded and parsed before attempting to render the application.
-        // This is the most robust way to prevent race conditions and blank screen errors.
         window.onload = function() {
             try {
-                // The global variable for lucide-react is `lucideReact` (camelCase)
-                const { User, Shirt, Sparkles, Download, XCircle, Image: ImageIcon, Trash2 } = lucideReact;
+                // **FIX**: The global variable for lucide-react is `LucideReact` (PascalCase).
+                const { User, Shirt, Sparkles, Download, XCircle, Image: ImageIcon, Trash2 } = LucideReact;
 
                 // Helper function to extract base64 data from a data URL
                 const getBase64Data = (dataUrl) => {
