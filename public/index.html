@@ -17,10 +17,13 @@
 <body class="bg-gray-900">
     <div id="root"></div>
 
-    <script type="text/babel">
+    <script type="text/babel" data-presets="react">
+        // **FIX FINAL**: Use window.onload to ensure all external scripts (React, Lucide)
+        // are fully loaded and parsed before attempting to render the application.
+        // This is the most robust way to prevent race conditions and blank screen errors.
         window.onload = function() {
             try {
-                // **FIX**: The global variable for lucide-react is `LucideReact` (PascalCase).
+                // The global variable for lucide-react is `LucideReact` (PascalCase).
                 const { User, Shirt, Sparkles, Download, XCircle, Image: ImageIcon, Trash2 } = LucideReact;
 
                 // Helper function to extract base64 data from a data URL
@@ -251,7 +254,8 @@
                     );
                 }
 
-                const root = ReactDOM.createRoot(document.getElementById('root'));
+                const container = document.getElementById('root');
+                const root = ReactDOM.createRoot(container);
                 root.render(<App />);
             } catch (e) {
                 console.error('Failed to start React app:', e);
