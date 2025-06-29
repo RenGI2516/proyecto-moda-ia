@@ -18,7 +18,11 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // **FIX**: Destructure icons from the global `lucide-react` object for correct usage in JSX.
+    // **FIX**: Wrap the entire React application logic inside a DOMContentLoaded event listener.
+    // This ensures that all scripts (like React, ReactDOM, Lucide) are fully loaded and the DOM is ready
+    // before we try to mount our application, preventing race conditions and blank screens.
+    document.addEventListener('DOMContentLoaded', () => {
+
         const { User, Shirt, Sparkles, Download, XCircle, Image: ImageIcon, Trash2 } = lucide-react;
 
         // Helper function to extract base64 data from a data URL
@@ -251,6 +255,7 @@
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
+    });
     </script>
 </body>
 </html>
